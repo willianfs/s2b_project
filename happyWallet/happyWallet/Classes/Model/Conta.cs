@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite;
+using System.IO;
 
 namespace happyWallet.Classes.Model
 {
@@ -19,6 +21,11 @@ namespace happyWallet.Classes.Model
         public String descricao { get; set; }
         public bool isValorNegativo { get; set; }
 
+        public Conta()
+        {
+
+        }
+
         public Conta(int pID, String pDescricao, bool pValorNegativo)
         {
 
@@ -26,6 +33,12 @@ namespace happyWallet.Classes.Model
             descricao = pDescricao;
             isValorNegativo = pValorNegativo;
 
+        }
+
+        public void InsereConta(string descConta, bool negativo)
+        {
+            var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
+            db.Insert(new Conta() { descricao = descConta , isValorNegativo = negativo  });
         }
 
     }
