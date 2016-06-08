@@ -3,15 +3,16 @@
     android:id="@+id/tableLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:stretchColumns="0,1">
-    <TableRow>
+    android:stretchColumns="0,1,2">
+    <TableRow
+        android:padding="10dp">
         <TextView
-            android:id="@+id/tvSaldo"
+            android:id="@+id/tvConta"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_span="2"
+            android:layout_span="3"
             android:layout_gravity="center"
-            android:text="Saldo" />
+            android:text="Conta" />
     </TableRow>
     <TableRow>
         <TextView
@@ -28,5 +29,12 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:text="Debito" />
+        <TextView
+            android:id="@+id/tvSaldo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_span="2"
+            android:text="Saldo"
+            android:layout_gravity="center" />
     </TableRow>
 </TableLayout>

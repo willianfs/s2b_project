@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace happyWallet
+namespace happyWallet.Classes.Model
 {
     class Conta
     {
@@ -18,6 +18,14 @@ namespace happyWallet
         public String descricao { get; set; }
         public bool isValorNegativo { get; set; }
 
+        public Conta(int pID, String pDescricao, bool pValorNegativo)
+        {
+
+            id_conta = pID;
+            descricao = pDescricao;
+            isValorNegativo = pValorNegativo;
+
+        }
 
     }
 }

@@ -60,20 +60,38 @@ namespace happyWallet
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int lstSaldoGeral = 2131034112;
-			
 			// aapt resource value: 0x7f050001
-			public const int tableLayout1 = 2131034113;
+			public const int btnMainAdicionar = 2131034113;
 			
-			// aapt resource value: 0x7f050003
-			public const int tvCredito = 2131034115;
+			// aapt resource value: 0x7f050000
+			public const int btnMainConsultar = 2131034112;
 			
-			// aapt resource value: 0x7f050004
-			public const int tvDebito = 2131034116;
+			// aapt resource value: 0x7f050005
+			public const int lstMainContas = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int tableLayout1 = 2131034118;
+			
+			// aapt resource value: 0x7f050007
+			public const int tvConta = 2131034119;
+			
+			// aapt resource value: 0x7f050008
+			public const int tvCredito = 2131034120;
+			
+			// aapt resource value: 0x7f050009
+			public const int tvDebito = 2131034121;
 			
 			// aapt resource value: 0x7f050002
-			public const int tvSaldo = 2131034114;
+			public const int tvMainCredito = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int tvMainDebito = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int tvMainSaldo = 2131034116;
+			
+			// aapt resource value: 0x7f05000a
+			public const int tvSaldo = 2131034122;
 			
 			static Id()
 			{
@@ -92,7 +110,7 @@ namespace happyWallet
 			public const int ActivityHappyWallet = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int layout_saldo_geral = 2130903041;
+			public const int layout_saldo = 2130903041;
 			
 			static Layout()
 			{
