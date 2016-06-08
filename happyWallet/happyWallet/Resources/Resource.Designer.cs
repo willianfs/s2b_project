@@ -63,9 +63,6 @@ namespace happyWallet
 			// aapt resource value: 0x7f050007
 			public const int btnCadastrarLancamentoData = 2131034119;
 			
-			// aapt resource value: 0x7f050009
-			public const int btnCadastrarLancamentoHora = 2131034121;
-			
 			// aapt resource value: 0x7f050012
 			public const int btnMainAdicionar = 2131034130;
 			
@@ -83,6 +80,12 @@ namespace happyWallet
 			
 			// aapt resource value: 0x7f05000f
 			public const int lstMainContas = 2131034127;
+			
+			// aapt resource value: 0x7f050017
+			public const int mi_Salvar = 2131034135;
+			
+			// aapt resource value: 0x7f050009
+			public const int pckCadastrarLancamento = 2131034121;
 			
 			// aapt resource value: 0x7f050003
 			public const int spnCadastrarLancamentoCategoria = 2131034115;
@@ -150,6 +153,9 @@ namespace happyWallet
 			
 			// aapt resource value: 0x7f030002
 			public const int layout_saldo = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int menu_cadastramento_lancamento = 2130903043;
 			
 			static Layout()
 			{

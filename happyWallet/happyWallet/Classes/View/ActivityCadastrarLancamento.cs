@@ -21,7 +21,7 @@ namespace happyWallet.Classes.View
 
         private EditText edtCadastrarLancamentoValor;
         private Button btnCadastrarLancamentoData;
-        private Button btnCadastrarLancamentoHora;
+        private TimePicker pckCadastrarLancamento;
         private EditText edtCadastrarLancamentoObs;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -37,17 +37,11 @@ namespace happyWallet.Classes.View
 
             edtCadastrarLancamentoValor = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoValor);
             btnCadastrarLancamentoData = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoData);
-            btnCadastrarLancamentoHora = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoHora);
+            pckCadastrarLancamento = FindViewById<TimePicker>(Resource.Id.pckCadastrarLancamento);
             edtCadastrarLancamentoObs = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoObs);
 
             btnCadastrarLancamentoData.Click += btnCadastrarLancamentoData_Click;
-            btnCadastrarLancamentoHora.Click += (sender, e) =>
-            {
-                //getting values from TImePicker via CurrentHour/CurrentMinutes
-                //btnCadastrarLancamentoHora.Text = String.Format("{0} : {1}", TimePicker.c.CurrentHour, picker.CurrentMinute);
-            };
-
-
+            
         }
 
         private void btnCadastrarLancamentoData_Click(object sender, EventArgs e)
@@ -62,6 +56,11 @@ namespace happyWallet.Classes.View
 
         }
 
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Layout.menu_cadastramento_lancamento, menu);
+            return base.OnPrepareOptionsMenu(menu);
+        }
 
         public override bool OnMenuItemSelected(int featureId, IMenuItem item)
         {
@@ -70,6 +69,10 @@ namespace happyWallet.Classes.View
             {
 
                 case Android.Resource.Id.Home:
+                    Finish();
+                    return true;
+
+                case Resource.Id.mi_Salvar:
                     Finish();
                     return true;
 

@@ -64,11 +64,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="Hora" />
-            <Button
-                android:id="@+id/btnCadastrarLancamentoHora"
-                android:layout_width="wrap_content"
+            <TimePicker
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selecione uma hora" />
+                android:id="@+id/pckCadastrarLancamento" />
         </TableRow>
         <TableRow>
             <TextView
@@ -81,7 +80,8 @@
             <EditText
                 android:id="@+id/edtCadastrarLancamentoObs"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine|text" />
         </TableRow>
     </TableLayout>
 </LinearLayout>
