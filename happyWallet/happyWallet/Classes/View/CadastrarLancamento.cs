@@ -23,7 +23,7 @@ namespace happyWallet.Classes.View
         private Button btnCadastrarLancamentoData;
         private Button btnCadastrarLancamentoHora;
         private EditText edtCadastrarLancamentoObs;
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -37,17 +37,17 @@ namespace happyWallet.Classes.View
 
             edtCadastrarLancamentoValor = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoValor);
             btnCadastrarLancamentoData = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoData);
-            btnCadastrarLancamentoHora = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoHora);            
+            btnCadastrarLancamentoHora = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoHora);
             edtCadastrarLancamentoObs = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoObs);
 
             btnCadastrarLancamentoData.Click += btnCadastrarLancamentoData_Click;
-            btnCadastrarLancamentoHora.Click += btnCadastrarLancamentoHora_Click;
+            btnCadastrarLancamentoHora.Click += (sender, e) =>
+            {
+                //getting values from TImePicker via CurrentHour/CurrentMinutes
+                //btnCadastrarLancamentoHora.Text = String.Format("{0} : {1}", TimePicker.c.CurrentHour, picker.CurrentMinute);
+            };
 
-        }
 
-        private void btnCadastrarLancamentoHora_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnCadastrarLancamentoData_Click(object sender, EventArgs e)

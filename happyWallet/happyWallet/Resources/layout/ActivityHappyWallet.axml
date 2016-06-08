@@ -7,23 +7,6 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="0,1">
-        <TableRow>
-            <Button
-                android:id="@+id/btnMainConsultar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Consultar" />
-            <Button
-                android:id="@+id/btnMainAdicionar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adicionar" />
-        </TableRow>
-    </TableLayout>
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:stretchColumns="0,1,2"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
@@ -63,4 +46,19 @@
         android:id="@+id/lstMainContas"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnMainConsultar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar" />
+    <Button
+        android:id="@+id/btnMainAdicionarConta"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Conta" />
+    <Button
+        android:id="@+id/btnMainAdicionar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Lançamento" />
 </LinearLayout>

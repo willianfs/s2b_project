@@ -68,7 +68,7 @@
                 android:id="@+id/btnCadastrarLancamentoHora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Selecione uma data" />
+                android:text="Selecione uma hora" />
         </TableRow>
         <TableRow>
             <TextView
