@@ -14,7 +14,7 @@ using System.Globalization;
 
 namespace happyWallet.Classes.View
 {
-    [Activity(Label = "HappyWallet", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "HappyWallet", MainLauncher = true)]
     class Main : Activity
     {
 
@@ -41,9 +41,7 @@ namespace happyWallet.Classes.View
             tvMainDebito = FindViewById<TextView>(Resource.Id.tvMainDebito);
 
             lstMainContas = FindViewById<ListView>(Resource.Id.lstMainContas);
-
-
-
+            
             List<Saldo> mLista = new List<Saldo>();
             mLista.Add(new Saldo(new Conta(1, "Carteira", false), 10, 5));
             mLista.Add(new Saldo(new Conta(2, "Banco", true), 15, 25));
@@ -68,7 +66,12 @@ namespace happyWallet.Classes.View
 
             lstMainContas.Adapter = mBase;
 
+            btnMainAdicionar.Click += Adicionar_Click;
         }
 
+        private void Adicionar_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(CadastrarLancamento));
+        }
     }
 }
