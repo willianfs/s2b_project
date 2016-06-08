@@ -26,9 +26,7 @@ namespace happyWallet.Classes
             conta = pConta;
             credito = pCredito;
             debito = pDebito;
-            
         }
-
     }
 
 }

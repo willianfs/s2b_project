@@ -22,7 +22,7 @@ namespace happyWallet
         public String descricao { get; set; }
 
         public Categoria categoria { get; set; }
-        public Conta conta { get; set; }
+      //  public Conta conta { get; set; }
 
 
     }

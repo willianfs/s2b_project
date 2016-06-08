@@ -14,7 +14,7 @@ namespace happyWallet
     [Activity(Label = "happyWallet", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+        //int count = 1;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -24,8 +24,21 @@ namespace happyWallet
                 System.Environment.SpecialFolder.MyDocuments), "DB"));
  
             dataBase.CreateTable<Conta>();
-            dataBase.CreateTable<Lancamento>();
+
+            var conta = new Conta();
+            conta.descricao = "Carteira";
+            conta.isValorNegativo = true;
+
+            dataBase.Insert(conta);
+
             dataBase.CreateTable<Categoria>();
+
+            var categoria = new Categoria();
+            categoria.nome = "Entreterimento";
+
+            dataBase.Insert(categoria);
+            var cat = dataBase.Find<Categoria>(categoria.idCategoria);
+            dataBase.CreateTable<Lancamento>();
 
             var lancamento = new Lancamento();       
 
@@ -33,8 +46,8 @@ namespace happyWallet
             lancamento.data = DateTime.Now;
             lancamento.valor = 25f;
             lancamento.descricao = "Valor gasto na compra de uma bala";
-            lancamento.conta = new Conta();
-            lancamento.categoria = new Categoria();
+        //    lancamento.conta = new Conta();
+            lancamento.categoria = cat;
 
             try
             {
