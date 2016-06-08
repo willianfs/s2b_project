@@ -16,7 +16,7 @@ namespace happyWallet.Classes.Model
 {
     class Conta
     {
-        [PrimaryKey, AutoIncrement]
+
         public int id_conta { get; set; }
         public String descricao { get; set; }
         public bool isValorNegativo { get; set; }

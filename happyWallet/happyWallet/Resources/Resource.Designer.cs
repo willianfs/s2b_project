@@ -66,11 +66,14 @@ namespace happyWallet
 			// aapt resource value: 0x7f050009
 			public const int btnCadastrarLancamentoHora = 2131034121;
 			
-			// aapt resource value: 0x7f05000d
-			public const int btnMainAdicionar = 2131034125;
+			// aapt resource value: 0x7f050012
+			public const int btnMainAdicionar = 2131034130;
 			
-			// aapt resource value: 0x7f05000c
-			public const int btnMainConsultar = 2131034124;
+			// aapt resource value: 0x7f050011
+			public const int btnMainAdicionarConta = 2131034129;
+			
+			// aapt resource value: 0x7f050010
+			public const int btnMainConsultar = 2131034128;
 			
 			// aapt resource value: 0x7f05000b
 			public const int edtCadastrarLancamentoObs = 2131034123;
@@ -78,8 +81,8 @@ namespace happyWallet
 			// aapt resource value: 0x7f050005
 			public const int edtCadastrarLancamentoValor = 2131034117;
 			
-			// aapt resource value: 0x7f050011
-			public const int lstMainContas = 2131034129;
+			// aapt resource value: 0x7f05000f
+			public const int lstMainContas = 2131034127;
 			
 			// aapt resource value: 0x7f050003
 			public const int spnCadastrarLancamentoCategoria = 2131034115;
@@ -105,26 +108,26 @@ namespace happyWallet
 			// aapt resource value: 0x7f050004
 			public const int tvCadastrarLancamentoValor = 2131034116;
 			
-			// aapt resource value: 0x7f050012
-			public const int tvConta = 2131034130;
-			
 			// aapt resource value: 0x7f050013
-			public const int tvCredito = 2131034131;
+			public const int tvConta = 2131034131;
 			
 			// aapt resource value: 0x7f050014
-			public const int tvDebito = 2131034132;
-			
-			// aapt resource value: 0x7f05000e
-			public const int tvMainCredito = 2131034126;
-			
-			// aapt resource value: 0x7f05000f
-			public const int tvMainDebito = 2131034127;
-			
-			// aapt resource value: 0x7f050010
-			public const int tvMainSaldo = 2131034128;
+			public const int tvCredito = 2131034132;
 			
 			// aapt resource value: 0x7f050015
-			public const int tvSaldo = 2131034133;
+			public const int tvDebito = 2131034133;
+			
+			// aapt resource value: 0x7f05000c
+			public const int tvMainCredito = 2131034124;
+			
+			// aapt resource value: 0x7f05000d
+			public const int tvMainDebito = 2131034125;
+			
+			// aapt resource value: 0x7f05000e
+			public const int tvMainSaldo = 2131034126;
+			
+			// aapt resource value: 0x7f050016
+			public const int tvSaldo = 2131034134;
 			
 			static Id()
 			{
