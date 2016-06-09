@@ -23,10 +23,12 @@ namespace happyWallet.Classes.Model
         public DateTime data { get; set; }
         public String descricao { get; set; }
 
-        public Categoria categoria { get; set; }
-        public Conta conta { get; set; }
+        public int idCategoria { get; set; }
+        public int idConta { get; set; }
 
-        public Lancamento(int idLancamento, float valor, DateTime data, String descricao, Categoria categoria,Conta conta)
+        public Lancamento() { }
+
+        public Lancamento(int idLancamento, float valor, DateTime data, String descricao, int idCategoria, int idConta)
         {
 
             this.idLancamento = idLancamento;
@@ -34,8 +36,10 @@ namespace happyWallet.Classes.Model
             this.data = data;
             this.descricao = descricao;
 
-            this.categoria = categoria;
-            this.conta = conta;
+            this.idCategoria = idCategoria;
+            this.idConta = idConta;
+
+        }
 
         public List<Lancamento> ListaLancamento()
         {
@@ -43,5 +47,6 @@ namespace happyWallet.Classes.Model
                 (System.Environment.SpecialFolder.MyDocuments), "BD"));
             return database.Table<Lancamento>().ToList<Lancamento>();
         }
+        
     }
 }

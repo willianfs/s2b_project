@@ -74,10 +74,9 @@ namespace happyWallet.Classes.View_App
                     return true;
 
                 case Resource.Id.mi_Salvar:
-                    Finish();
                     Lancamento lancamento = new Lancamento();
-
                     SalvarLancamento(lancamento);
+                    Finish();
                     return true;
 
                 default:

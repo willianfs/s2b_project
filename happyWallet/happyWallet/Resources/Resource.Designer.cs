@@ -101,9 +101,6 @@ namespace happyWallet
 			// aapt resource value: 0x7f05000f
 			public const int lstMainContas = 2131034127;
 			
-			// aapt resource value: 0x7f050010
-			public const int lstMainContas = 2131034128;
-			
 			// aapt resource value: 0x7f050020
 			public const int mi_Incluir = 2131034144;
 			

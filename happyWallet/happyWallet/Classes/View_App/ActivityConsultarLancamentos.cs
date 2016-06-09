@@ -29,9 +29,9 @@ namespace happyWallet.Classes.View_App
             lstConsultarLancamentos = FindViewById<ListView>(Resource.Id.lstConsultarLancamentos);
 
             List<Lancamento> mLista = new List<Lancamento>();
-            mLista.Add(new Lancamento(1,23, new DateTime(2016,6,3),"Cachorro Quente", new Categoria(1,"Alimentação"), new Conta(1, "Carteira", false)));
-            mLista.Add(new Lancamento(1, 23, new DateTime(2016, 6, 4), "Cemig", new Categoria(2, "Pagamentos"), new Conta(1, "Banco", true)));
-            mLista.Add(new Lancamento(1, 23, new DateTime(2016, 6, 5), "Cinema", new Categoria(3, "Lazer"), new Conta(1, "Carteira", false)));
+            mLista.Add(new Lancamento(1,23, new DateTime(2016,6,3),"Cachorro Quente", 1, 1));
+            mLista.Add(new Lancamento(1, 23, new DateTime(2016, 6, 4), "Cemig", 2, 1));
+            mLista.Add(new Lancamento(1, 23, new DateTime(2016, 6, 5), "Cinema", 3, 1));
 
             AdapterLancamentos mBase = new AdapterLancamentos(mLista, this);
 
