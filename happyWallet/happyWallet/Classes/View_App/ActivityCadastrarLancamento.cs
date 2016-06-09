@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using happyWallet.Classes.Model;
 
 namespace happyWallet.Classes.View_App
 {
@@ -74,6 +75,9 @@ namespace happyWallet.Classes.View_App
 
                 case Resource.Id.mi_Salvar:
                     Finish();
+                    Lancamento lancamento = new Lancamento();
+
+                    SalvarLancamento(lancamento);
                     return true;
 
                 default:
@@ -82,7 +86,13 @@ namespace happyWallet.Classes.View_App
             }
 
         }
-        
+
+        bool SalvarLancamento(Lancamento lancamento)
+        {
+            return true;
+        }
+
+
     }
 
 }

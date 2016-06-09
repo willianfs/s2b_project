@@ -4,24 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+        android:id="@+id/txtTitulo"
         android:text="Nome da Conta"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:layout_height="wrap_content" />
     <EditText
+        android:id="@+id/cxtxtNomeConta"
         android:inputType="textPersonName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText1" />
+        android:layout_height="wrap_content" />
     <CheckBox
+        android:id="@+id/isNegativo"
         android:text="Permitir Valor Negativo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox1" />
+        android:layout_height="wrap_content" />
     <Button
+        android:id="@+id/btCriarConta"
         android:text="Inserir Conta"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -19,5 +19,14 @@ namespace happyWallet.Classes.Model
         public int idCategoria { get; set; }
         public String nome { get; set; }
 
+        public Categoria() 
+        { 
+
+        }
+
+        public Categoria(String nome)
+        {
+            this.nome = nome;
+        }
     }
 }
