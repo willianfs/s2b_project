@@ -22,6 +22,7 @@ namespace happyWallet.Classes.Model
         public float valor { get; set; }
         public String data { get; set; }
         public String descricao { get; set; }
+        public int tipoLancamento { get; set; }
 
         public int idCategoria { get; set; }
         public int idConta { get; set; }

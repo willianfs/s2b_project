@@ -46,6 +46,18 @@
         </TableRow>
         <TableRow>
             <TextView
+                android:id="@+id/tvCadastrarLancamentoTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Tipo" />
+            <Spinner
+                android:id="@+id/spnCadastrarLancamentoTipo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <TextView
                 android:id="@+id/tvCadastrarLancamentoData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
