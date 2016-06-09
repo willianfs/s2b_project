@@ -65,6 +65,7 @@
     <Compile Include="Classes\Model\Saldo.cs" />
     <Compile Include="Classes\View_App\ActivityCadastrarLancamento.cs" />
     <Compile Include="Classes\View_App\ActivityConsultarLancamentos.cs" />
+    <Compile Include="Classes\View_App\CadastrarCategoria.cs" />
     <Compile Include="Classes\View_App\CadastrarConta.cs" />
     <Compile Include="Classes\View_App\DatePickerFragment.cs" />
     <Compile Include="Classes\View_App\ActivityHappyWallet.cs" />
@@ -96,6 +97,7 @@
     <AndroidResource Include="Resources\layout\menu_consulta_lancamento.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\CadastrarCategoria.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ActivityHappyWallet.axml" />
