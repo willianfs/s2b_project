@@ -12,7 +12,7 @@ using Android.Widget;
 using happyWallet.Classes.Model;
 using System.Globalization;
 
-namespace happyWallet.Classes.View
+namespace happyWallet.Classes.View_App
 {
     [Activity(Label = "HappyWallet", MainLauncher = true)]
     class Main : Activity

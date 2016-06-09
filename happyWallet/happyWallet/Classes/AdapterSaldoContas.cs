@@ -48,10 +48,10 @@ namespace happyWallet.Classes
             return position;
         }
 
-        public override Android.Views.View GetView(int position, Android.Views.View convertView, ViewGroup parent)
+        public override View GetView(int position, Android.Views.View convertView, ViewGroup parent)
         {
 
-            Android.Views.View view = convertView;
+            View view = convertView;
 
             if (view == null)
             {

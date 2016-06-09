@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace happyWallet.Classes.View
+namespace happyWallet.Classes.View_App
 {
     [Activity(Label = "CadastrarConta")]
     class CadastrarConta : Activity

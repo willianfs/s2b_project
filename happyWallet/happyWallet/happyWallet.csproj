@@ -61,10 +61,10 @@
     <Compile Include="Classes\AdapterSaldoContas.cs" />
     <Compile Include="Classes\Model\Conta.cs" />
     <Compile Include="Classes\Model\Saldo.cs" />
-    <Compile Include="Classes\View\ActivityCadastrarLancamento.cs" />
-    <Compile Include="Classes\View\CadastrarConta.cs" />
-    <Compile Include="Classes\View\DatePickerFragment.cs" />
-    <Compile Include="Classes\View\ActivityHappyWallet.cs" />
+    <Compile Include="Classes\View_App\ActivityCadastrarLancamento.cs" />
+    <Compile Include="Classes\View_App\CadastrarConta.cs" />
+    <Compile Include="Classes\View_App\DatePickerFragment.cs" />
+    <Compile Include="Classes\View_App\ActivityHappyWallet.cs" />
     <Compile Include="Lancamento.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
