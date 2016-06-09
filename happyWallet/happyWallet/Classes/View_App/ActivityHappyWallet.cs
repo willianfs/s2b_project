@@ -42,7 +42,7 @@ namespace happyWallet.Classes.View_App
             tvMainCredito = FindViewById<TextView>(Resource.Id.tvMainCredito);
             tvMainDebito = FindViewById<TextView>(Resource.Id.tvMainDebito);
 
-            lstMainContas = FindViewById<ListView>(Resource.Id.lstMainContas);
+            //lstMainContas = FindViewById<ListView>(Resource.Id.lstMainContas);
             
             /*
             List<Saldo> mLista = new List<Saldo>();
@@ -68,12 +68,18 @@ namespace happyWallet.Classes.View_App
             tvMainDebito.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", debito);
             tvMainSaldo.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", credito - debito);
 
-          //  AdapterSaldoContas mBase = new AdapterSaldoContas(mLista, this);
+            //  AdapterSaldoContas mBase = new AdapterSaldoContas(mLista, this);
 
-          //  lstMainContas.Adapter = mBase;
+            //  lstMainContas.Adapter = mBase;
 
+            btnMainConsultar.Click += Consultar_Click;
             btnMainAdicionar.Click += Adicionar_Click;
             btnMainAdicionarConta.Click += AdicionarConta_Click;
+        }
+
+        private void Consultar_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(ActivityConsultarLancamentos));
         }
 
         private void Adicionar_Click(object sender, EventArgs e)
