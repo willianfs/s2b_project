@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using happyWallet.Classes.Model;
+using SQLite;
+using System.IO;
 
 namespace happyWallet.Classes.View_App
 {
@@ -25,8 +27,12 @@ namespace happyWallet.Classes.View_App
         private TimePicker pckCadastrarLancamento;
         private EditText edtCadastrarLancamentoObs;
 
+        SQLiteConnection database = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath
+                (System.Environment.SpecialFolder.MyDocuments), "BD"));
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ActivityCadastrarLancamento);
@@ -34,6 +40,20 @@ namespace happyWallet.Classes.View_App
             this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             spnCadastrarLancamentoConta = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoConta);
+            database.CreateTable<Conta>();
+            var c = new Conta();
+            c.descricao = "Credito";
+            database.Insert(c);
+
+            var contas = database.Table<Conta>().ToList();
+            var lstContaNome = new List<String>();
+            foreach (var conta in contas)
+            {
+                lstContaNome.Add(conta.descricao);
+            }
+            var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstContaNome);
+            spnCadastrarLancamentoConta.Adapter = adapter;
+
             spnCadastrarLancamentoCategoria = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoCategoria);
 
             edtCadastrarLancamentoValor = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoValor);
@@ -75,7 +95,11 @@ namespace happyWallet.Classes.View_App
 
                 case Resource.Id.mi_Salvar:
                     Finish();
-                    Lancamento lancamento = new Lancamento();
+                    Lancamento lancamento = new Lancamento();              
+                    
+                    lancamento.data = btnCadastrarLancamentoData.Text;
+                    lancamento.descricao = edtCadastrarLancamentoObs.Text;                   
+                    lancamento.valor = float.Parse(edtCadastrarLancamentoValor.Text);
 
                     SalvarLancamento(lancamento);
                     return true;
@@ -87,9 +111,12 @@ namespace happyWallet.Classes.View_App
 
         }
 
-        bool SalvarLancamento(Lancamento lancamento)
+        void SalvarLancamento(Lancamento lancamento)
         {
-            return true;
+            var database = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath
+                (System.Environment.SpecialFolder.MyDocuments), "BD"));
+            database.Insert(lancamento);
+
         }
 
 

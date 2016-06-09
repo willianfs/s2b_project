@@ -45,7 +45,7 @@ namespace happyWallet.Classes.Model
             dataBase.Insert(conta);
             Conta getConta = dataBase.Get<Conta>(conta.id_conta);
 
-            lancamento.data = DateTime.Now;
+            lancamento.data = "";
             lancamento.valor = 1000f;
             lancamento.descricao = "Valor referente a venda de bala";
             lancamento.idConta = getCategoria.idCategoria;
