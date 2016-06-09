@@ -25,6 +25,7 @@ namespace happyWallet.Classes.View_App
         private Button btnMainConsultar;
         private Button btnMainAdicionar;
         private Button btnMainAdicionarConta;
+        private Button btnMainAdicionarCategoria;
 
         private ListView lstMainContas;
 
@@ -37,6 +38,7 @@ namespace happyWallet.Classes.View_App
             btnMainConsultar = FindViewById<Button>(Resource.Id.btnMainConsultar);
             btnMainAdicionar = FindViewById<Button>(Resource.Id.btnMainAdicionar);
             btnMainAdicionarConta = FindViewById<Button>(Resource.Id.btnMainAdicionarConta);
+            btnMainAdicionarCategoria = FindViewById<Button>(Resource.Id.btnMainAdicionarCategoria);
 
             tvMainSaldo = FindViewById<TextView>(Resource.Id.tvMainSaldo);
             tvMainCredito = FindViewById<TextView>(Resource.Id.tvMainCredito);
@@ -75,6 +77,13 @@ namespace happyWallet.Classes.View_App
             btnMainConsultar.Click += Consultar_Click;
             btnMainAdicionar.Click += Adicionar_Click;
             btnMainAdicionarConta.Click += AdicionarConta_Click;
+            btnMainAdicionarCategoria.Click += AdicionarCategoria_Click;
+
+        }
+
+        private void AdicionarCategoria_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(CadastrarCategoria));
         }
 
         private void Consultar_Click(object sender, EventArgs e)
