@@ -23,8 +23,20 @@ namespace happyWallet.Classes.Model
         public String descricao { get; set; }
 
         public Categoria categoria { get; set; }
-      //  public Conta conta { get; set; }
+        public Conta conta { get; set; }
 
+        public Lancamento(int idLancamento, float valor, DateTime data, String descricao, Categoria categoria,Conta conta)
+        {
+
+            this.idLancamento = idLancamento;
+            this.valor = valor;
+            this.data = data;
+            this.descricao = descricao;
+
+            this.categoria = categoria;
+            this.conta = conta;
+
+        }
 
     }
 }
