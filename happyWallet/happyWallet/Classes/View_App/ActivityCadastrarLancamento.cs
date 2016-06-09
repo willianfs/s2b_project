@@ -102,6 +102,7 @@ namespace happyWallet.Classes.View_App
                     lancamento.valor = float.Parse(edtCadastrarLancamentoValor.Text);
 
                     SalvarLancamento(lancamento);
+                    Finish();
                     return true;
 
                 default:

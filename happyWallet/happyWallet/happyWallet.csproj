@@ -57,12 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AdapterLancamentos.cs" />
     <Compile Include="Classes\Model\Categoria.cs" />
     <Compile Include="Classes\AdapterSaldoContas.cs" />
     <Compile Include="Classes\Model\Conta.cs" />
     <Compile Include="Classes\Model\CreateDataBase.cs" />
     <Compile Include="Classes\Model\Saldo.cs" />
     <Compile Include="Classes\View_App\ActivityCadastrarLancamento.cs" />
+    <Compile Include="Classes\View_App\ActivityConsultarLancamentos.cs" />
     <Compile Include="Classes\View_App\CadastrarConta.cs" />
     <Compile Include="Classes\View_App\DatePickerFragment.cs" />
     <Compile Include="Classes\View_App\ActivityHappyWallet.cs" />
@@ -85,6 +87,15 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\CadastroConta.axml" />
+    <AndroidResource Include="Resources\layout\layout_lancamentos.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ActivityConsultarlancamentos.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\menu_consulta_lancamento.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ActivityHappyWallet.axml" />
