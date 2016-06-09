@@ -20,7 +20,7 @@ namespace happyWallet.Classes.Model
         [PrimaryKey, AutoIncrement]
         public int idLancamento { get; set; }
         public float valor { get; set; }
-        public DateTime data { get; set; }
+        public String data { get; set; }
         public String descricao { get; set; }
 
         public int idCategoria { get; set; }
