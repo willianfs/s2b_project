@@ -61,6 +61,7 @@
     <Compile Include="Classes\Model\Categoria.cs" />
     <Compile Include="Classes\AdapterSaldoContas.cs" />
     <Compile Include="Classes\Model\Conta.cs" />
+    <Compile Include="Classes\Model\CreateDataBase.cs" />
     <Compile Include="Classes\Model\Saldo.cs" />
     <Compile Include="Classes\View_App\ActivityCadastrarLancamento.cs" />
     <Compile Include="Classes\View_App\ActivityConsultarLancamentos.cs" />

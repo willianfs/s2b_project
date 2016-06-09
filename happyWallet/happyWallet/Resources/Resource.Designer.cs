@@ -60,6 +60,9 @@ namespace happyWallet
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050016
+			public const int btCriarConta = 2131034134;
+			
 			// aapt resource value: 0x7f050007
 			public const int btnCadastrarLancamentoData = 2131034119;
 			
@@ -81,6 +84,9 @@ namespace happyWallet
 			// aapt resource value: 0x7f050015
 			public const int editText1 = 2131034133;
 			
+			// aapt resource value: 0x7f050014
+			public const int cxtxtNomeConta = 2131034132;
+			
 			// aapt resource value: 0x7f05000b
 			public const int edtCadastrarLancamentoObs = 2131034123;
 			
@@ -89,6 +95,11 @@ namespace happyWallet
 			
 			// aapt resource value: 0x7f05000c
 			public const int lstConsultarLancamentos = 2131034124;
+			// aapt resource value: 0x7f050015
+			public const int isNegativo = 2131034133;
+			
+			// aapt resource value: 0x7f05000f
+			public const int lstMainContas = 2131034127;
 			
 			// aapt resource value: 0x7f050010
 			public const int lstMainContas = 2131034128;
@@ -158,6 +169,9 @@ namespace happyWallet
 			
 			// aapt resource value: 0x7f05001a
 			public const int tvValor = 2131034138;
+			
+			// aapt resource value: 0x7f050013
+			public const int txtTitulo = 2131034131;
 			
 			static Id()
 			{

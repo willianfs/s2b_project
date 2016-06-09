@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using SQLite;
 using happyWallet.Classes.Model;
+using System.IO;
 
 namespace happyWallet.Classes.Model
 {
@@ -36,7 +37,11 @@ namespace happyWallet.Classes.Model
             this.categoria = categoria;
             this.conta = conta;
 
+        public List<Lancamento> ListaLancamento()
+        {
+            var database = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath
+                (System.Environment.SpecialFolder.MyDocuments), "BD"));
+            return database.Table<Lancamento>().ToList<Lancamento>();
         }
-
     }
 }
