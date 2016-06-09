@@ -12,7 +12,7 @@ using Android.Widget;
 using SQLite;
 using happyWallet.Classes.Model;
 
-namespace happyWallet
+namespace happyWallet.Classes.Model
 {
     class Lancamento
     {

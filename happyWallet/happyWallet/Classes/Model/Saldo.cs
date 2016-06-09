@@ -9,9 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using happyWallet.Classes.Model;
 
-namespace happyWallet.Classes
+namespace happyWallet.Classes.Model
 {
     class Saldo
     {

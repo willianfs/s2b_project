@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Globalization;
+using happyWallet.Classes.Model;
 
 namespace happyWallet.Classes
 {

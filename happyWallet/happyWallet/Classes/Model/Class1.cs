@@ -9,15 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 
-namespace happyWallet
+namespace happyWallet.Classes.Model
 {
-    class Categoria
+    class Class1
     {
-        [PrimaryKey, AutoIncrement]
-        public int idCategoria { get; set; }
-        public String nome { get; set; }
-
     }
 }
