@@ -22,7 +22,6 @@ namespace happyWallet.Classes.Model
         public bool isValorNegativo { get; set; }
 
 
-
         public Conta()
         {
 
@@ -37,20 +36,17 @@ namespace happyWallet.Classes.Model
 
         }
 
-
         public void InsereConta(string descConta, bool negativo)
         {
             var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
-            db.CreateTable<Conta>();
+            
 
-            if (db.Table<Conta>().Count() == 0)
-            {
+
                 // only insert the data if it doesn't already exist
                 var newConta = new Conta();
                 newConta.descricao = descConta;
                 newConta.isValorNegativo = negativo;
                 db.Insert(newConta);
-            }
             //Console.WriteLine("Reading data");
             //var table = db.Table<Conta>();
             //foreach (var s in table)
@@ -64,11 +60,12 @@ namespace happyWallet.Classes.Model
         {
             var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
             // db.CreateTable<Conta>(); 
-            Conta conta = db.Get<Conta>(this.id_conta);
-            var stocksStartingWithA = db.Query<Conta>("SELECT * FROM Conta");
-            foreach (var s in stocksStartingWithA)
+            // Conta conta = db.Get<Conta>(this.id_conta);
+            //var stocksStartingWithA = db.Query<Conta>("SELECT * FROM Conta");
+            var contas = db.Table<Conta>().ToList();
+            foreach (var conta in contas)
             {
-                Console.WriteLine(s.id_conta +" "+s.descricao + " " + s.isValorNegativo);
+                Console.WriteLine(conta.id_conta + " "+ conta.descricao + " " + conta.isValorNegativo);
             }
        }
 }
