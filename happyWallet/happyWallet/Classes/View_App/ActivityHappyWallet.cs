@@ -27,9 +27,7 @@ namespace happyWallet.Classes.View_App
         private Button btnMainAdicionar;
         private Button btnMainAdicionarConta;
         private Button btnMainAdicionarCategoria;
-
-        private ListView lstMainContas;
-
+       
         protected override void OnCreate(Bundle bundle)
         {
 

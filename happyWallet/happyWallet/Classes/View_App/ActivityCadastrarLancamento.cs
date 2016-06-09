@@ -21,6 +21,7 @@ namespace happyWallet.Classes.View_App
 
         private Spinner spnCadastrarLancamentoConta;
         private Spinner spnCadastrarLancamentoCategoria;
+        private Spinner spnCadastrarLancamentoTipo;
 
         private EditText edtCadastrarLancamentoValor;
         private Button btnCadastrarLancamentoData;
@@ -41,12 +42,17 @@ namespace happyWallet.Classes.View_App
 
             spnCadastrarLancamentoConta = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoConta);
             spnCadastrarLancamentoCategoria = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoCategoria);
+            spnCadastrarLancamentoTipo = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoTipo);
 
             var adapterConta = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstContaNome());
             spnCadastrarLancamentoConta.Adapter = adapterConta;
             
             var adapterCategoria = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstCategoriaNome());
             spnCadastrarLancamentoCategoria.Adapter = adapterCategoria;
+
+            String[] itens = { "Débito", "Crédito" };
+            var adapterTipo = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, itens);
+            spnCadastrarLancamentoTipo.Adapter = adapterTipo;
 
             edtCadastrarLancamentoValor = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoValor);
             btnCadastrarLancamentoData = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoData);
@@ -92,6 +98,7 @@ namespace happyWallet.Classes.View_App
                     lancamento.data = btnCadastrarLancamentoData.Text;
                     lancamento.descricao = edtCadastrarLancamentoObs.Text;                   
                     lancamento.valor = float.Parse(edtCadastrarLancamentoValor.Text);
+                    lancamento.tipoLancamento = spnCadastrarLancamentoTipo.SelectedItemPosition;
 
                     SalvarLancamento(lancamento);
                     Finish();
