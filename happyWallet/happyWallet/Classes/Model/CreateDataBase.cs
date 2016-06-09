@@ -23,8 +23,11 @@ namespace happyWallet.Classes.Model
 
             dataBase.CreateTable<Conta>();
             dataBase.CreateTable<Lancamento>();
-            dataBase.CreateTable<Categoria>();         
+            dataBase.CreateTable<Categoria>();
 
+            InsertCategoria(dataBase);       
+
+            /*
             List<Lancamento> lstLancamento = dataBase.Table<Lancamento>().ToList();
 
             foreach (var item in lstLancamento)
@@ -67,6 +70,8 @@ namespace happyWallet.Classes.Model
 
                 Console.WriteLine(e.GetType().ToString());
             }
+
+        */
 
         }
 

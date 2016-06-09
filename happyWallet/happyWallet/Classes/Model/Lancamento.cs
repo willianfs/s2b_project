@@ -33,7 +33,7 @@ namespace happyWallet.Classes.Model
 
             this.idLancamento = idLancamento;
             this.valor = valor;
-            this.data = data;
+        //    this.data = data;
             this.descricao = descricao;
 
             this.idCategoria = idCategoria;

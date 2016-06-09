@@ -11,13 +11,14 @@ using Android.Views;
 using Android.Widget;
 using happyWallet.Classes.Model;
 using System.Globalization;
+using SQLite;
+using System.IO;
 
 namespace happyWallet.Classes.View_App
 {
     [Activity(Label = "HappyWallet", MainLauncher = true)]
     class Main : Activity
     {
-
         private TextView tvMainSaldo;
         private TextView tvMainCredito;
         private TextView tvMainDebito;
@@ -30,7 +31,16 @@ namespace happyWallet.Classes.View_App
 
         protected override void OnCreate(Bundle bundle)
         {
-            
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            dataBase.CreateTable<Conta>();
+            dataBase.CreateTable<Lancamento>();
+            dataBase.CreateTable<Categoria>();
+
+            InsertCategoria(dataBase);
+
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.ActivityHappyWallet);
 
@@ -90,6 +100,20 @@ namespace happyWallet.Classes.View_App
         private void AdicionarConta_Click(object sender, EventArgs e)
         {
             StartActivity(typeof(CadastrarConta));
+        }
+
+        public void InsertCategoria(SQLiteConnection database)
+        {
+            List<String> lstCategoria = new List<string> { "Entretenimento", "Alimentação", "Educação" };
+
+            foreach (var nomeCategoria in lstCategoria)
+            {
+                Categoria categoria = new Categoria(nomeCategoria);
+                database.Insert(categoria);
+
+            }
+
+            database.Dispose();
         }
     }
 }

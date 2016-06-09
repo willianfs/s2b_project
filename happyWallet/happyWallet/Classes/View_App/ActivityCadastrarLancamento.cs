@@ -40,21 +40,13 @@ namespace happyWallet.Classes.View_App
             this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 
             spnCadastrarLancamentoConta = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoConta);
-            database.CreateTable<Conta>();
-            var c = new Conta();
-            c.descricao = "Credito";
-            database.Insert(c);
-
-            var contas = database.Table<Conta>().ToList();
-            var lstContaNome = new List<String>();
-            foreach (var conta in contas)
-            {
-                lstContaNome.Add(conta.descricao);
-            }
-            var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstContaNome);
-            spnCadastrarLancamentoConta.Adapter = adapter;
-
             spnCadastrarLancamentoCategoria = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoCategoria);
+
+            var adapterConta = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstContaNome());
+            spnCadastrarLancamentoConta.Adapter = adapterConta;
+            
+            var adapterCategoria = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstCategoriaNome());
+            spnCadastrarLancamentoCategoria.Adapter = adapterCategoria;
 
             edtCadastrarLancamentoValor = FindViewById<EditText>(Resource.Id.edtCadastrarLancamentoValor);
             btnCadastrarLancamentoData = FindViewById<Button>(Resource.Id.btnCadastrarLancamentoData);
@@ -120,7 +112,30 @@ namespace happyWallet.Classes.View_App
 
         }
 
+        List<String> lstContaNome()
+        {
+            List<Conta> lstConta = database.Table<Conta>().ToList();
+            var lstContaNome = new List<String>();
+            foreach (var conta in lstConta)
+            {
+                lstContaNome.Add(conta.descricao);
+            }
+            return lstContaNome;
+        }
 
-    }
+        List<String> lstCategoriaNome()
+        {
+            List<Categoria> lstCategoria = database.Table<Categoria>().ToList();
+            var lstCategoriaNome = new List<String>();
+            foreach (var categoria in lstCategoria)
+            {
+                lstCategoriaNome.Add(categoria.nome);
+            }
+            return lstCategoriaNome;
+        }
+            
+
+
+}
 
 }
