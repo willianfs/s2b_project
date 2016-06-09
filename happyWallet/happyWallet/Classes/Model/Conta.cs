@@ -68,5 +68,13 @@ namespace happyWallet.Classes.Model
                 Console.WriteLine(conta.id_conta + " "+ conta.descricao + " " + conta.isValorNegativo);
             }
        }
-}
+
+       public List<Conta> FindAll()
+        {
+            var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
+            return db.Table<Conta>().ToList();
+        }
+
+       
     }
+}

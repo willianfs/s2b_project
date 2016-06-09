@@ -26,6 +26,10 @@ namespace happyWallet.Classes.Model
             credito = pCredito;
             debito = pDebito;
         }
+
+        public Saldo()
+        {
+        }
     }
 
 }

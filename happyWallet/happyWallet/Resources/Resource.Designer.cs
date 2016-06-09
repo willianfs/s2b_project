@@ -61,8 +61,6 @@ namespace happyWallet
 		{
 			
 			// aapt resource value: 0x7f050017
-			public const int btCriarConta = 2131034135;
-			// aapt resource value: 0x7f050017
 			public const int btCriarCategoria = 2131034135;
 			
 			// aapt resource value: 0x7f05001b

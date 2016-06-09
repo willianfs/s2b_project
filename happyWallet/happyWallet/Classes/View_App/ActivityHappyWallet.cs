@@ -30,6 +30,9 @@ namespace happyWallet.Classes.View_App
 
         private ListView lstMainContas;
 
+        SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
         protected override void OnCreate(Bundle bundle)
         {
 
@@ -123,6 +126,31 @@ namespace happyWallet.Classes.View_App
             }
 
             database.Dispose();
+        }
+
+        List<Saldo> HistoricoLancamento()
+        {
+            List<Conta> listaConta = new Conta().FindAll();
+            List<Saldo> listaSaldo = new List<Saldo>();   
+
+            foreach (var conta in listaConta)
+            {
+                Saldo saldo = new Saldo();
+                saldo.conta = conta;
+
+                List<Lancamento> lstLancamento = dataBase.Query<Lancamento>("SELECT * FROM Lancamento WHERE idConta = ?", conta.id_conta);
+                foreach (var lancamento in lstLancamento)
+                {
+                    
+                    saldo.credito += lancamento.valor;
+
+                }
+               
+
+
+            }
+
+            return listaSaldo;
         }
     }
 }
