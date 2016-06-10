@@ -20,9 +20,13 @@ namespace happyWallet.Classes.Model
         public int idCategoria { get; set; }
         public String nome { get; set; }
 
-        public Categoria() { }
+        public Categoria()
+        {
 
-        public Categoria(String nome) {
+        }
+
+        public Categoria(String nome)
+        {
 
             this.nome = nome;
 
@@ -36,24 +40,66 @@ namespace happyWallet.Classes.Model
 
         }
 
-        public void InsereCategoria(string descCategoria)
+        public static bool categoriaExiste(String descricaoCategoria)
+        {
+            bool result = false;
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Categoria> lstCategoria = dataBase.Query<Categoria>("SELECT * FROM Categoria WHERE UPPER(nome) = ?", descricaoCategoria.ToUpper());
+
+            if (lstCategoria.Count > 0) result = true;
+
+            return result;
+
+        }
+
+        public static Categoria getCategoria(int idCategoria)
+        {
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Categoria> lstCategoria = dataBase.Query<Categoria>("SELECT * FROM Categoria WHERE idCategoria = ?", idCategoria);
+
+            return lstCategoria[0];
+
+        }
+
+        public static Categoria getCategoria(String descricaoCategoria)
+        {
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Categoria> lstCategoria = dataBase.Query<Categoria>("SELECT * FROM Categoria WHERE UPPER(nome) = ?", descricaoCategoria.ToUpper());
+
+            return lstCategoria[0];
+
+
+        }
+        public static List<String> getNomesCategoria()
+        {
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Categoria> lstCategoria = dataBase.Table<Categoria>().ToList();
+            var lstCategoriaNome = new List<String>();
+            foreach (var categoria in lstCategoria)
+            {
+                lstCategoriaNome.Add(categoria.nome);
+            }
+            return lstCategoriaNome;
+
+        }
+        public static void InsereCategoria(Categoria categoria)
         {
             var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
-
-
-
-            // only insert the data if it doesn't already exist
-            var newCategoria = new Categoria();
-            newCategoria.nome = descCategoria;
-            db.Insert(newCategoria);
-
-            //Console.WriteLine("Reading data");
-            //var table = db.Table<Conta>();
-            //foreach (var s in table)
-            //{
-            //    Console.WriteLine(s.id_conta + " " + s.descricao + " " + s.isValorNegativo);
-            //}
-
+            
+            db.Insert(categoria);
+            
         }
 
         public void PesquisaConta()

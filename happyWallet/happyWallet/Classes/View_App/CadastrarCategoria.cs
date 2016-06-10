@@ -57,12 +57,20 @@ namespace happyWallet.Classes.View_App
             if(txtNomeCategoria.Text != "")
             {
                 
-                Categoria categoria = new Categoria();
+                if (!Categoria.categoriaExiste(txtNomeCategoria.Text))
+                {
 
-                categoria.InsereCategoria(txtNomeCategoria.Text);
+                    Categoria categoria = new Categoria(txtNomeCategoria.Text);
 
-                Toast.MakeText(this, "Cadastrado com sucesso", ToastLength.Short).Show();
-                txtNomeCategoria.Text = "";
+                    Categoria.InsereCategoria(categoria);
+
+                    SetResult(Result.Ok);
+
+                    Finish();
+
+                }
+                else
+                    Toast.MakeText(this, "A categoria informada já existe", ToastLength.Short).Show();
             }
            else
                 Toast.MakeText(this, "Digite um nome para a categoria", ToastLength.Short).Show();

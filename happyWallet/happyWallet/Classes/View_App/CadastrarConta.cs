@@ -35,6 +35,7 @@ namespace happyWallet.Classes.View_App
             btCriarConta.Click += btCriarConta_Click;
             txtNomeConta = FindViewById<EditText>(Resource.Id.cxtxtNomeConta);
             ckNegativo = FindViewById<CheckBox>(Resource.Id.isNegativo);
+
         }
 
         public override bool OnMenuItemSelected(int featureId, IMenuItem item)
@@ -56,22 +57,30 @@ namespace happyWallet.Classes.View_App
         {
             if(txtNomeConta.Text != "")
             {
-                bool negativo;
-                if (ckNegativo.Checked == true)
+
+                if (!Conta.contaExiste(txtNomeConta.Text))
                 {
-                    negativo = true;
+
+                    bool negativo;
+                    if (ckNegativo.Checked == true)
+                    {
+                        negativo = true;
+                    }
+                    else
+                        negativo = false;
+
+                    Conta conta = new Conta(txtNomeConta.Text, negativo);
+
+                    Conta.InsereConta(conta);
+
+                    SetResult(Result.Ok);
+
+                    Finish();
+
                 }
                 else
-                    negativo = false;
+                    Toast.MakeText(this, "A conta informada já existe", ToastLength.Short).Show();
 
-                Conta conta = new Conta();
-
-                conta.InsereConta(txtNomeConta.Text, negativo);
-                conta.PesquisaConta();
-
-                Toast.MakeText(this, "Cadastrado com sucesso", ToastLength.Short).Show();
-                txtNomeConta.Text = "";
-                ckNegativo.Checked = false;
             }
            else
                 Toast.MakeText(this, "Digite um nome para a conta", ToastLength.Short).Show();

@@ -28,14 +28,35 @@ namespace happyWallet.Classes.View_App
 
             lstConsultarLancamentos = FindViewById<ListView>(Resource.Id.lstConsultarLancamentos);
 
-            List<Lancamento> mLista = new List<Lancamento>();
-            mLista.Add(new Lancamento(1,23, new DateTime(2016,6,3),"Cachorro Quente", 1, 1));
-            mLista.Add(new Lancamento(1, 23, new DateTime(2016, 6, 4), "Cemig", 2, 1));
-            mLista.Add(new Lancamento(1, 23, new DateTime(2016, 6, 5), "Cinema", 3, 1));
+            atualizarLista();
+
+
+
+        }
+
+        private void atualizarLista()
+        {
+
+            List<Lancamento> mLista = Lancamento.getLancamentos();
 
             AdapterLancamentos mBase = new AdapterLancamentos(mLista, this);
 
             lstConsultarLancamentos.Adapter = mBase;
+
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Result.Ok)
+            {
+
+               Toast.MakeText(this, "Lançamento cadastrado com sucesso", ToastLength.Short).Show();
+                atualizarLista();
+
+            }
 
         }
 
@@ -52,11 +73,12 @@ namespace happyWallet.Classes.View_App
             {
 
                 case Android.Resource.Id.Home:
+                    SetResult(Result.Ok);
                     Finish();
                     return true;
 
                 case Resource.Id.mi_Incluir:
-                    StartActivity(typeof(CadastrarLancamento));
+                    StartActivityForResult(typeof(CadastrarLancamento),0);
                     return true;
 
                 default:

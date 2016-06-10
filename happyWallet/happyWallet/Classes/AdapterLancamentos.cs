@@ -53,14 +53,18 @@ namespace happyWallet.Classes
         {
 
             View view = convertView;
+            Categoria auxCategoria = Categoria.getCategoria(DADOS[position].idCategoria);
 
             if (view == null)
             {
-                view = C.LayoutInflater.Inflate(Resource.Layout.layout_lancamentos, null);
+                if(DADOS[position].tipoLancamento == 0)
+                    view = C.LayoutInflater.Inflate(Resource.Layout.layout_lancamentos_debito, null);
+                else
+                    view = C.LayoutInflater.Inflate(Resource.Layout.layout_lancamentos_credito, null);
             }
 
-        //    view.FindViewById<TextView>(Resource.Id.tvData).Text = DADOS[position].data.Day + "/" + DADOS[position].data.Month + "/" + DADOS[position].data.Year;
-            view.FindViewById<TextView>(Resource.Id.tvCategoria).Text = DADOS[position].idCategoria.ToString();
+            view.FindViewById<TextView>(Resource.Id.tvData).Text = DADOS[position].data;
+            view.FindViewById<TextView>(Resource.Id.tvCategoria).Text = auxCategoria.nome;
             view.FindViewById<TextView>(Resource.Id.tvValor).Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", DADOS[position].valor);
 
             return view;

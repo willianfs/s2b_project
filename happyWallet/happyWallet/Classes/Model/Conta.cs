@@ -27,32 +27,83 @@ namespace happyWallet.Classes.Model
 
         }
 
-        public Conta(int pID, String pDescricao, bool pValorNegativo)
+        public Conta(String descricao, bool isValorNegativo)
         {
-
-            id_conta = pID;
-            descricao = pDescricao;
-            isValorNegativo = pValorNegativo;
+            
+            this.descricao = descricao;
+            this.isValorNegativo = isValorNegativo;
 
         }
 
-        public void InsereConta(string descConta, bool negativo)
+        public Conta(int id_conta, String descricao, bool isValorNegativo)
         {
+
+            this.id_conta = id_conta;
+            this.descricao = descricao;
+            this.isValorNegativo = isValorNegativo;
+
+        }
+
+        public static bool contaExiste(String descricaoConta)
+        {
+            bool result = false;
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Conta> lstConta = dataBase.Query<Conta>("SELECT * FROM Conta WHERE UPPER(descricao) = ?", descricaoConta.ToUpper());
+
+            if (lstConta.Count > 0) result = true;
+
+            return result;
+
+        }
+
+        public static Conta getConta(String descricaoConta)
+        {
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Conta> lstConta = dataBase.Query<Conta>("SELECT * FROM Conta WHERE UPPER(descricao) = ?", descricaoConta.ToUpper());
+            
+            return lstConta[0];
+
+        }
+
+        public static Conta getConta(int id_conta)
+        {
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Conta> lstConta = dataBase.Query<Conta>("SELECT * FROM Conta WHERE id_conta = ?", id_conta);
+
+            return lstConta[0];
+
+        }
+
+        public static List<String> getNomesConta()
+        {
+
+            SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            List<Conta> lstConta = dataBase.Table<Conta>().ToList();
+            var lstContaNome = new List<String>();
+            foreach (var conta in lstConta)
+            {
+                lstContaNome.Add(conta.descricao);
+            }
+            return lstContaNome;
+        }
+
+        public static void InsereConta(Conta conta)
+        {
+
             var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
             
-
-
-                // only insert the data if it doesn't already exist
-                var newConta = new Conta();
-                newConta.descricao = descConta;
-                newConta.isValorNegativo = negativo;
-                db.Insert(newConta);
-            //Console.WriteLine("Reading data");
-            //var table = db.Table<Conta>();
-            //foreach (var s in table)
-            //{
-            //    Console.WriteLine(s.id_conta + " " + s.descricao + " " + s.isValorNegativo);
-            //}
+            db.Insert(conta);
 
         }
 

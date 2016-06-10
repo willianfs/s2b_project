@@ -88,7 +88,7 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\CadastroConta.axml" />
-    <AndroidResource Include="Resources\layout\layout_lancamentos.axml">
+    <AndroidResource Include="Resources\layout\layout_lancamentos_debito.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ActivityConsultarlancamentos.axml">
@@ -98,6 +98,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\CadastrarCategoria.axml" />
+    <AndroidResource Include="Resources\layout\layout_lancamentos_credito.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ActivityHappyWallet.axml" />

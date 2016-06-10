@@ -7,14 +7,12 @@
         android:padding="10dp">
         <TextView
             android:id="@+id/tvData"
-            android:textColor="#FF0000"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:text="Data" />
         <TextView
             android:id="@+id/tvCategoria"
-            android:textColor="#00FF00"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

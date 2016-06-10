@@ -1,69 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_margin="10dp">
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="0,1,2"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-        <TableRow>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_span="3"
-                android:layout_gravity="center"
-                android:text="Saldo Geral" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:id="@+id/tvMainCredito"
-                android:textColor="#00FF00"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:text="Credito Geral" />
-            <TextView
-                android:id="@+id/tvMainDebito"
-                android:textColor="#FF0000"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:text="Debito Geral" />
-            <TextView
-                android:id="@+id/tvMainSaldo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_span="2"
-                android:layout_gravity="center"
-                android:text="Saldo Geral" />
-        </TableRow>
-    </TableLayout>
-    <ListView
-        android:id="@+id/lstMainContas"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btnMainConsultar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Consultar" />
-    <Button
-        android:id="@+id/btnMainAdicionarConta"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Conta" />
-    <Button
-        android:id="@+id/btnMainAdicionarCategoria"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Categoria" />
-    <Button
-        android:id="@+id/btnMainAdicionar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Lançamento" />
-</LinearLayout>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+	
+	<LinearLayout 
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_margin="10dp">
+	
+		<TableLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:stretchColumns="0,1,2"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp">
+			<TableRow>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_span="3"
+					android:layout_gravity="center"
+					android:text="Saldo Geral" />
+			</TableRow>
+			<TableRow>
+				<TextView
+					android:id="@+id/tvMainCredito"
+					android:textColor="#00FF00"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="center"
+					android:text="Credito Geral" />
+				<TextView
+					android:id="@+id/tvMainDebito"
+					android:textColor="#FF0000"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="center"
+					android:text="Debito Geral" />
+				<TextView
+					android:id="@+id/tvMainSaldo"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_span="2"
+					android:layout_gravity="center"
+					android:text="Saldo Geral" />
+			</TableRow>
+		</TableLayout>
+		<ListView
+			android:id="@+id/lstMainContas"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" />
+		<Button
+			android:id="@+id/btnMainConsultar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Consultar" />
+		<Button
+			android:id="@+id/btnMainAdicionarConta"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Adicionar Conta" />
+		<Button
+			android:id="@+id/btnMainAdicionarCategoria"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Adicionar Categoria" />
+		<Button
+			android:id="@+id/btnMainAdicionar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Adicionar Lançamento" />
+	</LinearLayout>
+	
+</ScrollView>

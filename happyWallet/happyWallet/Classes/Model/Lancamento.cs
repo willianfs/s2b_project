@@ -29,20 +29,29 @@ namespace happyWallet.Classes.Model
 
         public Lancamento() { }
 
-        public Lancamento(int idLancamento, float valor, DateTime data, String descricao, int idCategoria, int idConta)
+        public Lancamento(float valor, String data, String descricao, int tipoLancamento, int idCategoria, int idConta)
         {
-
-            this.idLancamento = idLancamento;
+            
             this.valor = valor;
-        //    this.data = data;
+            this.data = data;
             this.descricao = descricao;
+            this.tipoLancamento = tipoLancamento;
 
             this.idCategoria = idCategoria;
             this.idConta = idConta;
 
         }
 
-        public List<Lancamento> ListaLancamento()
+        public static void InsereLancamento(Lancamento lancamento)
+        {
+
+            var db = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "BD"));
+
+            db.Insert(lancamento);
+
+        }
+
+        public static List<Lancamento> getLancamentos()
         {
             var database = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath
                 (System.Environment.SpecialFolder.MyDocuments), "BD"));

@@ -30,6 +30,11 @@ namespace happyWallet.Classes.View_App
 
         private ListView lstMainContas;
 
+        private int RESULT_LANCAMENTO = 0;
+        private int RESULT_CONTA = 1;
+        private int RESULT_CATEGORIA = 2;
+        private int RESULT_Consultar = 3;
+
         SQLiteConnection dataBase = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath(
                 System.Environment.SpecialFolder.MyDocuments), "BD"));
 
@@ -43,7 +48,7 @@ namespace happyWallet.Classes.View_App
             dataBase.CreateTable<Lancamento>();
             dataBase.CreateTable<Categoria>();
 
-            InsertCategoria(dataBase);
+            //InsertCategoria(dataBase);
 
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.ActivityHappyWallet);
@@ -57,35 +62,8 @@ namespace happyWallet.Classes.View_App
             tvMainCredito = FindViewById<TextView>(Resource.Id.tvMainCredito);
             tvMainDebito = FindViewById<TextView>(Resource.Id.tvMainDebito);
 
-            //lstMainContas = FindViewById<ListView>(Resource.Id.lstMainContas);
-            
-            /*
-            List<Saldo> mLista = new List<Saldo>();
-            mLista.Add(new Saldo(new Conta(1, "Carteira", false), 10, 5));
-            mLista.Add(new Saldo(new Conta(2, "Banco", true), 15, 25));
-            mLista.Add(new Saldo(new Conta(3, "Alimentação", false), 73, 52));
-            */
-
-            double credito = 0;
-            double debito = 0;
-
-            /*
-            for (int i = 0; i < mLista.Count; i++)
-            {
-
-                credito += mLista[i].credito;
-                debito += mLista[i].debito;
-
-            }
-            */
-
-            tvMainCredito.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", credito);
-            tvMainDebito.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", debito);
-            tvMainSaldo.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", credito - debito);
-
-            //  AdapterSaldoContas mBase = new AdapterSaldoContas(mLista, this);
-
-            //  lstMainContas.Adapter = mBase;
+            lstMainContas = FindViewById<ListView>(Resource.Id.lstMainContas);
+            atualizarSlados();
 
             btnMainConsultar.Click += Consultar_Click;
             btnMainAdicionar.Click += Adicionar_Click;
@@ -94,27 +72,90 @@ namespace happyWallet.Classes.View_App
 
         }
 
+        private void atualizarSlados()
+        {
+
+            List<Saldo> mListaSaldo = Saldo.getSaldosContas();
+            AdapterSaldoContas mBase = new AdapterSaldoContas(mListaSaldo, this);
+
+            lstMainContas.Adapter = mBase;
+
+            double credito = 0;
+            double debito = 0;
+
+            for (int i = 0; i < mListaSaldo.Count; i++)
+            {
+
+                credito += mListaSaldo[i].credito;
+                debito += mListaSaldo[i].debito;
+
+            }
+
+            tvMainCredito.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", credito);
+            tvMainDebito.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", debito);
+            tvMainSaldo.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", credito - debito);
+
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Result.Ok)
+            {
+
+                if (requestCode == RESULT_LANCAMENTO) {
+
+                    Toast.MakeText(this, "Lançamento cadastrado com sucesso", ToastLength.Short).Show();
+                    atualizarSlados();
+
+                }
+                else if (requestCode == RESULT_CONTA)
+                {
+
+                    Toast.MakeText(this, "Conta cadastrada com sucesso", ToastLength.Short).Show();
+                    atualizarSlados();
+
+                }
+                else if (requestCode == RESULT_CATEGORIA)
+                {
+
+                    Toast.MakeText(this, "Categoria cadastrada com sucesso", ToastLength.Short).Show();
+
+                }
+                else if (requestCode == RESULT_Consultar)
+                {
+
+                    atualizarSlados();
+
+                }
+
+            }
+
+        }
+
         private void AdicionarCategoria_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(CadastrarCategoria));
+            StartActivityForResult(typeof(CadastrarCategoria), RESULT_CATEGORIA);
         }
 
         private void Consultar_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(ActivityConsultarLancamentos));
+            StartActivityForResult(typeof(ActivityConsultarLancamentos),RESULT_Consultar);
         }
 
         private void Adicionar_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(CadastrarLancamento));
+            StartActivityForResult(typeof(CadastrarLancamento), RESULT_LANCAMENTO);
         }
 
         private void AdicionarConta_Click(object sender, EventArgs e)
         {
-            StartActivity(typeof(CadastrarConta));
+            StartActivityForResult(typeof(CadastrarConta), RESULT_CONTA);
         }
 
-        public void InsertCategoria(SQLiteConnection database)
+        /*public void InsertCategoria(SQLiteConnection database)
         {
             List<String> lstCategoria = new List<string> { "Entretenimento", "Alimentação", "Educação" };
 
@@ -126,31 +167,8 @@ namespace happyWallet.Classes.View_App
             }
 
             database.Dispose();
-        }
+        }*/
 
-        List<Saldo> HistoricoLancamento()
-        {
-            List<Conta> listaConta = new Conta().FindAll();
-            List<Saldo> listaSaldo = new List<Saldo>();   
-
-            foreach (var conta in listaConta)
-            {
-                Saldo saldo = new Saldo();
-                saldo.conta = conta;
-
-                List<Lancamento> lstLancamento = dataBase.Query<Lancamento>("SELECT * FROM Lancamento WHERE idConta = ?", conta.id_conta);
-                foreach (var lancamento in lstLancamento)
-                {
-                    
-                    saldo.credito += lancamento.valor;
-
-                }
-               
-
-
-            }
-
-            return listaSaldo;
-        }
+        
     }
 }

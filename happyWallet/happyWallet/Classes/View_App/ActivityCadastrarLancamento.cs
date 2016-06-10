@@ -44,10 +44,10 @@ namespace happyWallet.Classes.View_App
             spnCadastrarLancamentoCategoria = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoCategoria);
             spnCadastrarLancamentoTipo = FindViewById<Spinner>(Resource.Id.spnCadastrarLancamentoTipo);
 
-            var adapterConta = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstContaNome());
+            var adapterConta = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Conta.getNomesConta());
             spnCadastrarLancamentoConta.Adapter = adapterConta;
             
-            var adapterCategoria = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, lstCategoriaNome());
+            var adapterCategoria = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, Categoria.getNomesCategoria());
             spnCadastrarLancamentoCategoria.Adapter = adapterCategoria;
 
             String[] itens = { "Débito", "Crédito" };
@@ -92,16 +92,36 @@ namespace happyWallet.Classes.View_App
                     return true;
 
                 case Resource.Id.mi_Salvar:
-                    Finish();
-                    Lancamento lancamento = new Lancamento();              
                     
-                    lancamento.data = btnCadastrarLancamentoData.Text;
-                    lancamento.descricao = edtCadastrarLancamentoObs.Text;                   
-                    lancamento.valor = float.Parse(edtCadastrarLancamentoValor.Text);
-                    lancamento.tipoLancamento = spnCadastrarLancamentoTipo.SelectedItemPosition;
+                    Conta auxConta = Conta.getConta(spnCadastrarLancamentoConta.SelectedItem.ToString());
+                    Categoria auxCategoria = Categoria.getCategoria(spnCadastrarLancamentoCategoria.SelectedItem.ToString());
+                    Saldo saldo = Saldo.getSaldo(auxConta.descricao);
+                    float valor = float.Parse(edtCadastrarLancamentoValor.Text);
 
-                    SalvarLancamento(lancamento);
-                    Finish();
+                    Console.Write(auxConta.isValorNegativo.ToString() + " --- " + ((saldo.credito - saldo.debito) < valor).ToString());
+
+                    if (auxConta.isValorNegativo && ((saldo.credito - saldo.debito) < valor && spnCadastrarLancamentoTipo.SelectedItemPosition == 0))
+                    {
+
+                        Toast.MakeText(this, "Sem saldo para a conta selecionada", ToastLength.Short).Show();
+
+                    } else
+                    {
+
+                        Lancamento lancamento = new Lancamento(valor,
+                                                                btnCadastrarLancamentoData.Text,
+                                                                edtCadastrarLancamentoObs.Text,
+                                                                spnCadastrarLancamentoTipo.SelectedItemPosition,
+                                                                auxConta.id_conta,
+                                                                auxCategoria.idCategoria);
+
+                        Lancamento.InsereLancamento(lancamento);
+
+                        SetResult(Result.Ok);
+
+                        Finish();
+                        
+                    }
                     return true;
 
                 default:
@@ -110,39 +130,7 @@ namespace happyWallet.Classes.View_App
             }
 
         }
-
-        void SalvarLancamento(Lancamento lancamento)
-        {
-            var database = new SQLiteConnection(Path.Combine(System.Environment.GetFolderPath
-                (System.Environment.SpecialFolder.MyDocuments), "BD"));
-            database.Insert(lancamento);
-
-        }
-
-        List<String> lstContaNome()
-        {
-            List<Conta> lstConta = database.Table<Conta>().ToList();
-            var lstContaNome = new List<String>();
-            foreach (var conta in lstConta)
-            {
-                lstContaNome.Add(conta.descricao);
-            }
-            return lstContaNome;
-        }
-
-        List<String> lstCategoriaNome()
-        {
-            List<Categoria> lstCategoria = database.Table<Categoria>().ToList();
-            var lstCategoriaNome = new List<String>();
-            foreach (var categoria in lstCategoria)
-            {
-                lstCategoriaNome.Add(categoria.nome);
-            }
-            return lstCategoriaNome;
-        }
-            
-
-
-}
+        
+    }
 
 }
